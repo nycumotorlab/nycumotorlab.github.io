@@ -67,7 +67,7 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 <link rel="stylesheet" id="newstone-css" href="https://nycumotorlab.github.io/wp-content/themes/newstone/style.css?ver=1.0.8" media="all">
 <link rel="https://api.w.org/" href="https://nycumotorlab.github.io/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://nycumotorlab.github.io/wp-json/wp/v2/pages/151"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nycumotorlab.github.io/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 7.0.1">
+<meta name="generator" content="WordPress 7.0.2">
 <link rel="canonical" href="https://nycumotorlab.github.io/courses/">
 <link rel="shortlink" href="https://nycumotorlab.github.io/?p=151">
 <!-- Google tag (gtag.js) -->
@@ -81,7 +81,36 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 </script><style id="custom-background-css">
 body.custom-background { background-color: #0a0700; }
 </style>
-<link rel="icon" href="https://nycumotorlab.github.io/wp-content/uploads/2026/05/1150328_MotorLab_Logo_Transp_Large_cr.png" sizes="32x32">
+<script>(function() {
+    function preventBackspace(event) {
+        if (event.key === 'Backspace' || event.keyCode === 8) {
+            let target = event.target;
+            let tagName = target.tagName.toLowerCase();
+            
+            // 如果游標不在文字輸入框，且不在可編輯的內容區（如傳統編輯器本體）
+            if (tagName !== 'input' && tagName !== 'textarea' && !target.isContentEditable) {
+                event.preventDefault();
+            }
+        }
+    }
+
+    // 1. 攔截主網頁、外層工具列、標題列的 Backspace
+    document.addEventListener('keydown', preventBackspace);
+
+    // 2. 專門攻破傳統編輯器的 iframe，潛入內部進行攔截
+    window.addEventListener('load', function() {
+        // 尋找傳統編輯器的文字區域 iframe
+        let editorIframe = document.getElementById('content_ifr');
+        if (editorIframe && editorIframe.contentWindow) {
+            try {
+                editorIframe.contentWindow.document.addEventListener('keydown', preventBackspace);
+            } catch (e) {
+                console.log('傳統編輯器防禦載入失敗，可能存在同源限制。');
+            }
+        }
+    });
+})();
+</script><link rel="icon" href="https://nycumotorlab.github.io/wp-content/uploads/2026/05/1150328_MotorLab_Logo_Transp_Large_cr.png" sizes="32x32">
 <link rel="icon" href="https://nycumotorlab.github.io/wp-content/uploads/2026/05/1150328_MotorLab_Logo_Transp_Large_cr.png" sizes="192x192">
 <link rel="apple-touch-icon" href="https://nycumotorlab.github.io/wp-content/uploads/2026/05/1150328_MotorLab_Logo_Transp_Large_cr.png">
 <meta name="msapplication-TileImage" content="https://nycumotorlab.github.io/wp-content/uploads/2026/05/1150328_MotorLab_Logo_Transp_Large_cr.png">
@@ -114,10 +143,11 @@ body.custom-background { background-color: #0a0700; }
 <li id="menu-item-158" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-151 current_page_item menu-item-158"><a href="https://nycumotorlab.github.io/courses/" aria-current="page">Courses</a></li>
 <li id="menu-item-160" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-160"><a href="https://nycumotorlab.github.io/team/">Team</a>
 <ul class="sub-menu">
-	<li id="menu-item-284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-284"><a href="https://nycumotorlab.github.io/%E6%89%BE%E8%80%81%E5%B8%AB%E6%87%B6%E4%BA%BA%E5%8C%85/">找老師懶人包</a></li>
+	<li id="menu-item-284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-284"><a href="https://nycumotorlab.github.io/%E6%89%BE%E8%80%81%E5%B8%AB%E6%87%B6%E4%BA%BA%E5%8C%85/">Join Us</a></li>
 </ul>
 </li>
 <li id="menu-item-180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://nycumotorlab.github.io/contact/">Contact</a></li>
+<li id="menu-item-349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-349"><a href="https://nycumotorlab.github.io/refs/">Refs</a></li>
 </ul></div>			</div>
 			<div id="feature-image" class="bg">
 								<div id="show-feature-image" style="background:url(https://nycumotorlab.github.io/wp-content/uploads/2026/07/IMG_8522cr.jpg)"></div>
@@ -143,9 +173,37 @@ body.custom-background { background-color: #0a0700; }
 
 
 
-<details class="wp-block-details is-layout-flow wp-block-details-is-layout-flow"><summary>應用電子學</summary>
+<details class="wp-block-details is-layout-flow wp-block-details-is-layout-flow"><summary>Microcontroller</summary>
 <ul class="wp-block-list">
-<li>半導體物理, Lattice, Energy band, Boltzman Distribution, WBG</li>
+<li>Digital logic, adder, mutiplier, mux, bus, memory</li>
+
+
+
+<li>ALU, CU, CS/IP, Instruction set, CPU, Assembly</li>
+
+
+
+<li>8051, SFR, Compiler</li>
+
+
+
+<li>C2000 &amp; Peripherals</li>
+
+
+
+<li>AD, DA, INL, DNL, ENOB, SFDR</li>
+
+
+
+<li>Common interfacing circuits</li>
+</ul>
+</details>
+
+
+
+<details class="wp-block-details is-layout-flow wp-block-details-is-layout-flow"><summary>Applied Electronics</summary>
+<ul class="wp-block-list">
+<li>Semiconductor physics, Lattice, Energy band, Boltzman Distribution, WBG</li>
 
 
 
@@ -181,7 +239,11 @@ body.custom-background { background-color: #0a0700; }
 
 
 
-<li>Gate driving, Shunt sensing </li>
+<li>IGBT, SiC, GaN, 2DEG</li>
+
+
+
+<li>Gate driving, Shunt sensing, Hall Sensing</li>
 
 
 
@@ -190,41 +252,13 @@ body.custom-background { background-color: #0a0700; }
 
 
 
-<pre class="wp-block-preformatted">Textbook: Fundamentals of Microelectronics, Razavi<br>Refs: Neamen, Sze, Muller, Application Notes</pre>
-</details>
-
-
-
-<details class="wp-block-details is-layout-flow wp-block-details-is-layout-flow"><summary>微處理機</summary>
-<ul class="wp-block-list">
-<li>數位邏輯, adder, mutiplier, mux, bus, memory</li>
-
-
-
-<li>ALU, CU, CS/IP, Instruction set, CPU, Assembly</li>
-
-
-
-<li>8051, SFR, Compiler</li>
-
-
-
-<li>C2000 &amp; Peripherals</li>
-
-
-
-<li>AD, DA, INL, DNL, ENOB, SFDR</li>
-
-
-
-<li>Common interfacing circuits</li>
-</ul>
+<pre class="wp-block-preformatted">Textbook: Fundamentals of Microelectronics 3e, Razavi<br>Refs: Neamen, Sze, Muller, Application Notes</pre>
 </details>
 
 
 
 <p class="wp-block-paragraph"></p>
-<p class="last-updated-date">Recently updated on 13 7 月, 2026 at 10:59 下午</p>											</div>
+<p class="last-updated-date">Recently updated on 17 7 月, 2026 at 09:41 上午</p>											</div>
 						
 					<div class="post-meta">
 											</div>
@@ -263,7 +297,7 @@ body.custom-background { background-color: #0a0700; }
 </script>
 <script id="newstone-navigation-js" src="https://nycumotorlab.github.io/wp-content/themes/newstone/js/navigation.js?ver=2.0.2"></script>
 <script id="wp-emoji-settings" type="application/json">
-{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://nycumotorlab.github.io/wp-includes/js/wp-emoji-release.min.js?ver=7.0.1"}}
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://nycumotorlab.github.io/wp-includes/js/wp-emoji-release.min.js?ver=7.0.2"}}
 </script>
 <script type="module">
 /*! This file is auto-generated */
